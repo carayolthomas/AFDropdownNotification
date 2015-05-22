@@ -40,17 +40,17 @@
     if (self) {
         
         _notificationView = [UIView new];
-        _notificationView.backgroundColor = [UIColor whiteColor];
+        _notificationView.backgroundColor = [UIColor colorWithRed:45/255.0f green:44/255.0f blue:42/255.0f alpha:1.0f];
         
         _titleLabel = [UILabel new];
         _titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15];
         _titleLabel.numberOfLines = 0;
-        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.textColor = [UIColor whiteColor];
         
         _subtitleLabel = [UILabel new];
         _subtitleLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:13];
         _subtitleLabel.numberOfLines = 0;
-        _subtitleLabel.textColor = [UIColor blackColor];
+        _subtitleLabel.textColor = [UIColor whiteColor];
         
         _imageView = [UIImageView new];
         _imageView.image = nil;
@@ -129,7 +129,7 @@
         [[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:_notificationView];
         
         if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
-            UIVisualEffect *visualEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+            UIVisualEffect *visualEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
             UIVisualEffectView *blurView = [[UIVisualEffectView alloc] initWithEffect:visualEffect];
             blurView.frame = _notificationView.bounds;
             [_notificationView addSubview:blurView];
