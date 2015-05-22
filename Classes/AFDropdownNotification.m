@@ -8,7 +8,7 @@
 
 #import "AFDropdownNotification.h"
 
-#define kDropdownImageSize 40
+#define kDropdownImageSize 30
 #define kDropdownPadding 10
 #define kDropdownTitleFontSize 19
 #define kDropdownSubtitleFontSize 14
@@ -98,13 +98,28 @@
         } else {
             textWidth = ([[UIScreen mainScreen] bounds].size.width - kDropdownPadding - kDropdownImageSize - kDropdownPadding - kDropdownPadding - kDropdownPadding);
         }
-        NSInteger titleHeight = [_titleLabel.text boundingRectWithSize:CGSizeMake(textWidth, 999) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:kDropdownTitleFontSize]} context:nil].size.height;
+        NSInteger titleHeight;
+        if (_topButtonText) {
+            titleHeight = [_titleLabel.text boundingRectWithSize:CGSizeMake(textWidth, 999) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-Light" size:kDropdownTitleFontSize]} context:nil].size.height;
+        } else {
+            titleHeight = 25;
+        }
         NSInteger subtitleHeight = [_subtitleLabel.text boundingRectWithSize:CGSizeMake(textWidth, 999) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:kDropdownSubtitleFontSize]} context:nil].size.height;
-        NSInteger notificationHeight = (20 + kDropdownPadding + titleHeight + (kDropdownPadding / 2) + subtitleHeight + kDropdownPadding);
+        NSInteger notificationHeight;
+        if (_topButtonText) {
+            notificationHeight = (20 + kDropdownPadding + titleHeight + (kDropdownPadding / 2) + subtitleHeight + kDropdownPadding);
+        } else {
+            notificationHeight = 64;
+        }
+         
         
         if (notificationHeight < 100) {
             
             notificationHeight = 100;
+        }
+        
+        if (!_topButtonText) {
+            notificationHeight = 64;
         }
         
         _notificationView.frame = CGRectMake(0, -notificationHeight, [[UIScreen mainScreen] bounds].size.width, notificationHeight);
