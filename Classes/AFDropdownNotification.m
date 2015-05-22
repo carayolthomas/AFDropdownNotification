@@ -134,7 +134,7 @@
             blurView.frame = _notificationView.bounds;
             [_notificationView addSubview:blurView];
         } else {
-            _notificationView.backgroundColor = [UIColor whiteColor];
+            _notificationView.backgroundColor = [UIColor colorWithRed:45/255.0f green:44/255.0f blue:42/255.0f alpha:1.0f];
         }
         
         _imageView.frame = CGRectMake(kDropdownPadding, (notificationHeight / 2) - (kDropdownImageSize / 2) + (20 / 2), kDropdownImageSize, kDropdownImageSize);
