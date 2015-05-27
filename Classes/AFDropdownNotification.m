@@ -125,8 +125,8 @@
         _notificationView.frame = CGRectMake(0, -notificationHeight, [[UIScreen mainScreen] bounds].size.width, notificationHeight);
         _notificationView.backgroundColor = [UIColor clearColor];
         
-        [[[UIApplication sharedApplication] keyWindow] addSubview:_notificationView];
-        [[[UIApplication sharedApplication] keyWindow] bringSubviewToFront:_notificationView];
+        [view addSubview:_notificationView];
+        [view bringSubviewToFront:_notificationView];
         
         if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
             UIVisualEffect *visualEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
